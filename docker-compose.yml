@@ -28,7 +28,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - frontend_dist:/output
-    entrypoint: ["sh", "-c", "cp -r /usr/share/nginx/html/* /output/"]
+    entrypoint: ["sh", "-c", "rm -rf /output/* && cp -r /usr/share/nginx/html/* /output/"]
 
   app:
     restart: unless-stopped
