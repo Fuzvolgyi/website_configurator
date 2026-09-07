@@ -9,6 +9,7 @@ public final class DatabaseConstants {
         public static final String PICTURES = "pictures";
         public static final String TEXTS = "texts";
         public static final String SITE_IMAGES = "site_images";
+        public static final String BANNERS = "banners";
 
         private TableName() {}
     }
@@ -21,6 +22,7 @@ public final class DatabaseConstants {
             public static final String NAME = "name";
             public static final String ROUTE_PATH = "route_path";
             public static final String ACTIVE = "active";
+            public static final String BANNER_INTERVAL_SECONDS = "banner_interval_seconds";
 
             private Sites() {}
         }
@@ -41,6 +43,15 @@ public final class DatabaseConstants {
             public static final String LANGUAGE = "language";
 
             private Texts() {}
+        }
+
+        public static final class Banners {
+            public static final String BANNER_KEY = "banner_key";
+            public static final String POSITION = "position";
+            public static final String VISIBLE = "visible";
+            public static final String SITE_ID = "site_id";
+
+            private Banners() {}
         }
 
         public static final class SiteImages {

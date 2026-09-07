@@ -26,4 +26,8 @@ public class SiteEntity extends BaseEntity {
 
     @Column(name = DatabaseConstants.FieldName.Sites.ACTIVE, nullable = false)
     private boolean active;
+
+    /** How long each home page banner stays on screen, in seconds. */
+    @Column(name = DatabaseConstants.FieldName.Sites.BANNER_INTERVAL_SECONDS, nullable = false)
+    private int bannerIntervalSeconds;
 }
