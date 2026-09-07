@@ -30,6 +30,8 @@ services:
 
   app:
     build: .
+    ports:
+      - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB}
       - DB_USERNAME=${POSTGRES_USER}

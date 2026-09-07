@@ -49,6 +49,7 @@ public class TranslationService {
             body.add("text", text);
             body.add("source_lang", sourceLanguage.toUpperCase());
             body.add("target_lang", targetLanguage.toUpperCase());
+            body.add("tag_handling", "html");
 
             HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
             ResponseEntity<Map> response = restTemplate.postForEntity(apiUrl, request, Map.class);
