@@ -1,0 +1,18 @@
+# Line endings.
+#
+# The .env.example in this repository was committed with CRLF line endings, so a
+# copy of it becomes a CRLF .env on the deployment host. Docker Compose strips the
+# trailing CR, so containers keep working and the problem stays invisible -- but
+# every shell script that reads the file breaks, because each value silently ends
+# in a carriage return:
+#
+#   eval "$(grep -E '^POSTGRES_USER=' .env)"    # -> role "postgres\r" does not exist
+#
+# Pinning eol=lf keeps these files LF in the working tree on every platform,
+# including Windows checkouts with core.autocrlf=true.
+.env.example text eol=lf
+*.sh         text eol=lf
+gradlew      text eol=lf
+
+# The Windows launcher must keep CRLF.
+*.bat        text eol=crlf
