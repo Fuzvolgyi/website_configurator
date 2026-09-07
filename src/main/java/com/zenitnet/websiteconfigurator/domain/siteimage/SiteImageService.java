@@ -36,6 +36,18 @@ public class SiteImageService {
             ));
     }
 
+    /**
+     * Removes an image and the file behind it. Used when a banner is deleted: without it
+     * the row and the object in storage would both stay behind, and a later banner
+     * reusing the key would inherit the old picture.
+     */
+    public void deleteImage(String imageKey, Long siteId) {
+        siteImageRepository.findByImageKeyAndSiteId(imageKey, siteId).ifPresent(image -> {
+            storageService.deleteFile(image.getStorageUrl());
+            siteImageRepository.delete(image);
+        });
+    }
+
     public void saveImage(String imageKey, String storageUrl, Long siteId) {
         SiteEntity site = siteService.findById(siteId);
         var existing = siteImageRepository.findByImageKeyAndSiteId(imageKey, siteId);
